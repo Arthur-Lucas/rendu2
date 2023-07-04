@@ -15,5 +15,4 @@ function getAllfestivals(){
     });
 }
 
-module.exports.getRandomNumber = getRandomNumber;
-module.exports.getAllfestivals = getAllfestivals;
+module.exports = {getRandomNumber, getAllfestivals};
