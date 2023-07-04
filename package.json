@@ -4,11 +4,12 @@
   "description": "Rendu 2 Arthur LUCAS ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^8.44.0"
+    "eslint": "^8.44.0",
+    "jest": "^29.5.0"
   }
 }
