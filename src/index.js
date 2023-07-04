@@ -3,7 +3,7 @@ function getAllfestivals(){
     .then(response => response.json())
     .then(data => {
         // Traitement des données
-        reponse = data.records;
+        var response = data.records;
         return response;
     })
     .catch(error => {
@@ -17,7 +17,7 @@ function filterFestivalsByQuery(query){
     .then(response => response.json())
     .then(data => {
         // Traitement des données
-        reponse = data.records;
+        var response = data.records;
         return response;
     })
     .catch(error => {
@@ -31,7 +31,7 @@ function getAllRegions(){
     .then(response => response.json())
     .then(data => {
         // Traitement des données
-        reponse = data.facet_groups[0].facets;
+        var response = data.facet_groups[0].facets;
         return response;
     })
     .catch(error => {
