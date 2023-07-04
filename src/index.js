@@ -1,13 +1,10 @@
-function getRandomNumber() {
-  return Math.floor(Math.random() * 100);
-}
-
 function getAllfestivals(){
-    fetch('https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&q=&rows=100&facet=region&facet=domaine&facet=complement_domaine&facet=departement&facet=mois_habituel_de_debut')
+    fetch('https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&rows=100')
     .then(response => response.json())
     .then(data => {
         // Traitement des données
-        return data;
+        reponse = data.records;
+        return response;
     })
     .catch(error => {
         // Gestion des erreurs
@@ -15,4 +12,32 @@ function getAllfestivals(){
     });
 }
 
-module.exports = {getRandomNumber, getAllfestivals};
+function filterFestivalsByQuery(query){
+    fetch('https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&q=' + query)
+    .then(response => response.json())
+    .then(data => {
+        // Traitement des données
+        reponse = data.records;
+        return response;
+    })
+    .catch(error => {
+        // Gestion des erreurs
+        console.error('Une erreur s\'est produite :', error);
+    });
+}
+
+function getAllRegions(){
+    fetch('https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&q=' + query)
+    .then(response => response.json())
+    .then(data => {
+        // Traitement des données
+        reponse = data.facet_groups[0].facets;
+        return response;
+    })
+    .catch(error => {
+        // Gestion des erreurs
+        console.error('Une erreur s\'est produite :', error);
+    });
+}
+
+module.exports = {getAllRegions, getAllfestivals, filterFestivalsByQuery};
