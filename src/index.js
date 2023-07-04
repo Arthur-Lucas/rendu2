@@ -21,7 +21,6 @@ async function filterFestivalsByQuery(query){
         console.error('Une erreur s\'est produite :', error);
     } 
     
-
 }
 
 async function getAllRegions(){
@@ -35,4 +34,27 @@ async function getAllRegions(){
       }
 }
 
-module.exports = {getAllRegions, getAllfestivals, filterFestivalsByQuery};
+
+async function getFestivalSOrderByFieldASC(field){
+    try {
+        const response = await fetch('https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&rows=100&sort=-' + field);
+        const data = await response.json();
+        const festivalData = data.records;
+        return festivalData;
+      } catch (error) {
+        console.error('Une erreur s\'est produite :', error);
+      }
+}
+
+async function getFestivalSOrderByFieldDESC(field){
+    try {
+        const response = await fetch('https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&rows=100&sort=' + field);
+        const data = await response.json();
+        const festivalData = data.records;
+        return festivalData;
+      } catch (error) {
+        console.error('Une erreur s\'est produite :', error);
+      }
+}
+
+module.exports = {getAllRegions, getAllfestivals, filterFestivalsByQuery, getFestivalSOrderByFieldASC, getFestivalSOrderByFieldDESC};
