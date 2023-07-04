@@ -18,7 +18,6 @@ function filterFestivalsByQuery(query){
     .then(data => {
         // Traitement des données
         var response = data.records;
-        console.log(response);
         return response;
     })
     .catch(error => {
@@ -32,7 +31,6 @@ async function getAllRegions(){
         const response = await fetch('https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&facet=region');
         const data = await response.json();
         const festivalData = data.facet_groups[0].facets;
-        console.log(festivalData);
         return festivalData;
       } catch (error) {
         console.error('Une erreur s\'est produite :', error);
