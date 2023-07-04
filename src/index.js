@@ -1,6 +1,6 @@
 async function getAllfestivals(){
     try {
-        const response = fetch('https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&rows=100')
+        const response = await fetch('https://data.culture.gouv.fr/api/records/1.0/search/?dataset=panorama-des-festivals&rows=100')
         const data = await response.json();
         const festivalData = data.records;
         return festivalData;
